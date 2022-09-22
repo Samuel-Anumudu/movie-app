@@ -23,8 +23,9 @@ export default class AuthController extends BaseController {
             if (!await bcrypt.compare(password, user.password))
                 return res.status(401).json({ message: "Autentification failed!"})
 
-            const token = await JWT.sign({ email }, undefined, undefined);
-            return res.status(200).json({ message: "Authentifiation was successful", token });
+            const token = await JWT.sign({ email }, JWT.expiresIn, JWT.audience);
+            const refreshToken = await JWT.sign({ email }, JWT.refreshTokenExpiresIn, JWT.audience);
+            return res.status(200).json({ message: "Authentifiation was successful", data: {token, refreshToken} });
         }catch(err) {
             console.error(err);
             return res.status(500).json({});
@@ -62,24 +63,12 @@ export default class AuthController extends BaseController {
      * @param req 
      * @param res 
      */
-    // static async refreshToken(req: Request, res: Response) {
-	// 	try {
-	// 		const { token } = req.body;
-	// 		const tokenFromHeader = auth.getJwtToken(req);
-	// 		const user = jwt.decode(tokenFromHeader);
-
-	// 		if ((data.refreshToken) && (data.refreshToken in tokenList)) {
-	// 			// const token = jwt.sign({ user }, config.auth.jwt_secret, { expiresIn: config.auth.jwt_expiresin, algorithm: 'HS512' });
-	// 			// const response = {
-	// 			// 	token,
-	// 			// };
-	// 			// // update the token in the list
-	// 			// tokenList[data.refreshToken].token = token;
-	// 		} else {
-	// 			res.status(400).json({});
-	// 		}
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// }
+    static async refreshToken(req: Request, res: Response) {
+		try {
+			// const token = req.headers.authorization?.split(" ")[1];
+            // const refresh_token = 
+		} catch (err) {
+			console.error(err);
+		}
+	}
 };

@@ -8,7 +8,7 @@ const userschema = new Schema<IUser>({
         index: true,
         required: true,
         minlength: [3, 'Must have at least 3 characters'],
-        maxlength: [25, 'Must have at most 25 characters'],
+        maxlength: [60, 'Must have at most 25 characters'],
         validate: {
             validator: (str: string) => {
                 return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(str);

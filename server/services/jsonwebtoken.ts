@@ -18,19 +18,18 @@ class JWTClass {
         this.audience = audience;
     }
 
-    async sign(data: object, time: string | undefined, audience: string | string[] | undefined): Promise<string>{
-        return await jwt.sign(data, this.secret, {
-                algorithm: "HS256",
-                expiresIn: time || this.expiresIn,
-                audience: audience || this.audience,
-                issuer: "movie.app"
-            }
-        )
+    async sign(data: object, time: string | undefined, audience: string | string[] | undefined): Promise<string | undefined> {
+            return await jwt.sign(data, this.secret, {
+                    algorithm: "HS256",
+                    expiresIn: time || this.expiresIn,
+                    audience: audience || this.audience,
+                    issuer: "movie.app"
+                })
     }
 
-    verify(token: string): string | JwtPayload {
-        return jwt.verify(token, this.secret);
-    }
+    async verify(token: string): Promise<string | jwt.JwtPayload | undefined> {
+            return await jwt.verify(token, this.secret)
+    };
 }
 
 export default new JWTClass(

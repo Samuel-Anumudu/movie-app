@@ -1,5 +1,9 @@
 import { Document } from "mongoose"
 
+
+/**
+ * Representing a user model in the system
+ */
 export interface IUser {
     email: string,
     password: string
