@@ -1,12 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Movies from "./pages/Movies";
+import TVSeries from "./pages/TVSeries";
+import Bookmarked from "./pages/Bookmarked";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <div className="App">
-     <h1 className='text-3xl font-medium'>Hello, there?</h1>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Movies" element={<Movies />} />
+        <Route path="/TVSeries" element={<TVSeries />} />
+        <Route path="/Bookmarked" element={<Bookmarked />} />
+        <Route path="/NotFound" element={<NotFound />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Signup" element={<Signup />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
 export default App;
