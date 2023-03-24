@@ -17,9 +17,9 @@ function App() {
         <Route path="/Movies" element={<Movies />} />
         <Route path="/TVSeries" element={<TVSeries />} />
         <Route path="/Bookmarked" element={<Bookmarked />} />
-        <Route path="/NotFound" element={<NotFound />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
