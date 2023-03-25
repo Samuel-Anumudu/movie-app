@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase.config";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +12,32 @@ const Signup = () => {
     repeatPassword: "",
   });
   const { email, password, repeatPassword } = formData;
+
+  const navigate = useNavigate();
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (password !== repeatPassword) {
+      toast.error("Passwords do not match.");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Password too short. Please try again");
+      return;
+    }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      navigate("/");
+    } catch (error) {
+      toast.error("Invalid Email or Password. Please try again");
+    }
+  };
 
   const onChange = (event) => {
     setFormData((prevState) => ({
@@ -38,7 +66,7 @@ const Signup = () => {
       </div>
       <div className="login-box">
         <h1>Signup</h1>
-        <form onSubmit={}>
+        <form onSubmit={onSubmit}>
           <div className="form-control relative w-72 mt-5 mx-0 mb-10">
             <input
               className="input py-4 px-0 block w-full max-w-xs bg-transparent rounded-none border-t-0 border-x-0 border-b-2 border-green-500 focus:border-b-[#add8e6] focus:outline-none valid:border-b-[#add8e6] valid:outline-none cursor-pointer"

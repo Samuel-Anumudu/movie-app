@@ -1,4 +1,5 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { auth } from "../firebase.config";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,6 +10,12 @@ const Navbar = () => {
       return true;
     }
   };
+
+  const onLogout = () => {
+    auth.signOut();
+    navigate("/login");
+  };
+
   return (
     <nav>
       <div>
@@ -41,7 +48,7 @@ const Navbar = () => {
         </li>
       </ul>
       <div>
-        <h1>Profile</h1>
+        <a onClick={onLogout}>Profile</a>
       </div>
     </nav>
   );

@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase.config";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -7,6 +10,8 @@ const Login = () => {
     password: "",
   });
   const { email, password } = formData;
+  const navigate = useNavigate();
+
   const onChange = (event) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -14,6 +19,23 @@ const Login = () => {
     }));
   };
 
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      if (userCredential.user) {
+        navigate("/");
+        toast.success("Login successful!");
+      }
+    } catch (error) {
+      toast.error("Can't sign in. Check your email or password");
+    }
+  };
   useEffect(() => {
     const labels = document.querySelectorAll(".form-control label");
     labels.forEach((label) => {
@@ -34,7 +56,7 @@ const Login = () => {
       </div>
       <div className="login-box">
         <h1>Login</h1>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="form-control relative w-72 mt-5 mx-0 mb-10">
             <input
               className="input py-4 px-0 block w-full max-w-xs bg-transparent rounded-none border-t-0 border-x-0 border-b-2 border-green-500 focus:border-b-[#add8e6] focus:outline-none valid:border-b-[#add8e6] valid:outline-none cursor-pointer"
