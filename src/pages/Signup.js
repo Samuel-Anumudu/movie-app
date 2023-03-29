@@ -32,6 +32,7 @@ const Signup = () => {
         email,
         password
       );
+      // eslint-disable-next-line
       const user = userCredential.user;
       navigate("/");
     } catch (error) {

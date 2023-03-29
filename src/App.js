@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { MovieProvider } from "./context/MovieContext";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -14,7 +15,7 @@ import useAuthStatus from "./hooks/useAuthStatus";
 function App() {
   const { loggedIn } = useAuthStatus();
   return (
-    <>
+    <MovieProvider>
       <BrowserRouter>
         {loggedIn && <Navbar />}
         <Routes>
@@ -31,9 +32,9 @@ function App() {
         position="top-center"
         autoClose={3000}
         hideProgressBar={true}
-        theme="dark"
+        // theme="dark"
       />
-    </>
+    </MovieProvider>
   );
 }
 export default App;

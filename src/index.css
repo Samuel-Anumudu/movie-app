@@ -43,6 +43,11 @@ img {
   transform: translateY(-30px);
 }
 
+/* Remove search icon from input search */
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
 /* Spinner */
 .loadingSpinnerContainer {
   position: fixed;
