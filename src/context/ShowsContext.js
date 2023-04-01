@@ -1,14 +1,20 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { data } from "../data";
 
 const ShowsContext = createContext();
 
+const showsFromLocalStorage = JSON.parse(
+  localStorage.getItem("allShows") || JSON.stringify(data)
+);
+
 export const ShowsProvider = ({ children }) => {
   const [shows, setShows] = useState({
-    allShows: data,
-    bookmarkedShows: data.filter((show) => show.isBookmarked),
-    tvSeries: data.filter((show) => show.category === "TV Series"),
-    movies: data.filter((show) => show.category === "Movie"),
+    allShows: showsFromLocalStorage,
+    bookmarkedShows: showsFromLocalStorage.filter((show) => show.isBookmarked),
+    tvSeries: showsFromLocalStorage.filter(
+      (show) => show.category === "TV Series"
+    ),
+    movies: showsFromLocalStorage.filter((show) => show.category === "Movie"),
   });
   const { allShows, bookmarkedShows, tvSeries, movies } = shows;
 
@@ -19,16 +25,22 @@ export const ShowsProvider = ({ children }) => {
 
   const { query, listOfShows } = search;
 
+  useEffect(() => {
+    localStorage.setItem("allShows", JSON.stringify(allShows));
+  }, [allShows]);
+
   const formatString = (string) =>
     string.replace(/ /g, "").trim().toLowerCase();
 
-  const handleSearchFilter = (e, listToFilter) => {
+  const handleSearchFilter = (event, listToFilter) => {
     const filteredSearch = listToFilter.filter((show) => {
-      if (formatString(e.target.value) === "") return data;
-      return formatString(show.title).includes(formatString(e.target.value));
+      if (formatString(event.target.value) === "") return showsFromLocalStorage;
+      return formatString(show.title).includes(
+        formatString(event.target.value)
+      );
     });
     setSearch({
-      query: e.target.value,
+      query: event.target.value,
       listOfShows: filteredSearch,
     });
   };
