@@ -1,23 +1,40 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import SearchInput from "../components/SearchInput";
-import MovieContext from "../context/MovieContext";
-import MoviesItem from "../components/MoviesItem";
+import ShowsContext from "../context/ShowsContext";
+import ShowsItem from "../components/ShowsItem";
+import SearchList from "../components/SearchList";
 
 const TVSeries = () => {
-  const { moviesList } = useContext(MovieContext);
+  const location = useLocation();
+  const { tvSeries, handleSearchFilter, query, setSearch } =
+    useContext(ShowsContext);
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setSearch((prevState) => ({
+        ...prevState,
+        query: "",
+      }));
+    }
+  }, [location.pathname, setSearch]);
   return (
     <main>
       <section>
-        <SearchInput />
-        <div>
-          <p className="font-bold">TVSeries</p>
-          {moviesList.map(
-            (movie, index) =>
-              movie.category === "TV Series" && (
-                <MoviesItem key={index} movie={movie} />
-              )
-          )}
-        </div>
+        <SearchInput
+          placeholder="Search for TV series"
+          onChange={(e) => handleSearchFilter(e, tvSeries)}
+        />
+        {query ? (
+          <SearchList />
+        ) : (
+          <div>
+            <p className="font-bold">TV Series</p>
+            {tvSeries.map((show) => (
+              <ShowsItem key={show.id} id={show.id} show={show} />
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

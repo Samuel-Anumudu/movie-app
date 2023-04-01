@@ -1,7 +1,4 @@
-import { useContext } from "react";
-import MovieContext from "../context/MovieContext";
-const SearchInput = () => {
-  const { searchParam, setSearchParam } = useContext(MovieContext);
+const SearchInput = ({ placeholder, value, onChange }) => {
   return (
     <div>
       <form>
@@ -9,10 +6,10 @@ const SearchInput = () => {
           <h3>searchIcon</h3>
           <input
             type="search"
-            placeholder="Search for movies or TV series"
+            placeholder={placeholder}
             className="input input-bordered w-full max-w-xs"
-            value={searchParam}
-            onChange={(e) => setSearchParam(e.target.value)}
+            value={value}
+            onChange={onChange}
           />
         </div>
       </form>

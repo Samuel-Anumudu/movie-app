@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <header>
       <nav className="flex items-center justify-between">
-        <div>
+        <div onClick={() => navigate("/")}>
           <h1>Logo</h1>
         </div>
         <ul className="flex items-center gap-2">
@@ -50,9 +50,9 @@ const Navbar = () => {
           </li>
         </ul>
         <div>
-          <a href="#" onClick={onLogout}>
+          <p href="#" onClick={onLogout}>
             Profile
-          </a>
+          </p>
         </div>
       </nav>
     </header>
