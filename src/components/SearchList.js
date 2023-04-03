@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ShowsItem from "../components/ShowsItem";
-import ShowsContext from "../context/ShowsContext";
+import ShowsContext from "../context/ShowContext";
 
 const SearchList = () => {
   const { listOfShows, query } = useContext(ShowsContext);

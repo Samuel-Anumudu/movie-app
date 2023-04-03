@@ -20,7 +20,7 @@ export const ShowsProvider = ({ children }) => {
 
   const [search, setSearch] = useState({
     query: "",
-    listOfShows: allShows,
+    listOfShows: showsFromLocalStorage,
   });
 
   const { query, listOfShows } = search;

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --bgColor: hsl(223, 30%, 9%);
+  --redColor: hsl(0, 97%, 63%);
+}
+
 *,
 *::before,
 *::after {
@@ -14,11 +21,12 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-size: 16px;
+  font-family: "Outfit", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bgColor);
+  min-height: 100vh;
 }
 
 code {
@@ -33,19 +41,25 @@ img {
 .form-control label span {
   display: inline-block;
   font-size: 18px;
-  /* min-width: 5px; */
+  min-width: 5px;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
   color: lightblue;
-  transform: translateY(-30px);
+  /* transform: translateY(-30px); */
+  transform: translateY(-20px);
 }
 
 /* Remove search icon from input search */
 input[type="search"]::-webkit-search-cancel-button {
   display: none;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--redColor);
+  cursor: pointer;
 }
 
 /* Spinner */
@@ -66,7 +80,8 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #00cc66 transparent #00cc66 transparent;
+  /* border-color: #00cc66 transparent #00cc66 transparent; */
+  border-color: var(--redColor) transparent var(--redColor) transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }

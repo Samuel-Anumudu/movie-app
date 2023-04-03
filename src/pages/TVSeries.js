@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import SearchInput from "../components/SearchInput";
-import ShowsContext from "../context/ShowsContext";
+import ShowsContext from "../context/ShowContext";
 import ShowsItem from "../components/ShowsItem";
 import SearchList from "../components/SearchList";
 

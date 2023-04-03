@@ -6,7 +6,7 @@ import Spinner from "../components/Spinner";
 import SearchInput from "../components/SearchInput";
 import ShowsList from "../components/ShowsList";
 import SearchList from "../components/SearchList";
-import ShowsContext from "../context/ShowsContext";
+import ShowsContext from "../context/ShowContext";
 
 const Home = () => {
   const { loggedIn, checkingStatus } = useAuthStatus();

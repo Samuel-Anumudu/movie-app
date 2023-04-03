@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ShowsContext from "../context/ShowsContext";
+import ShowsContext from "../context/ShowContext";
 import ShowsItem from "./ShowsItem";
 
 const ShowsList = () => {

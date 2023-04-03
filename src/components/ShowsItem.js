@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import ShowsContext from "../context/ShowsContext";
-
+import ShowsContext from "../context/ShowContext";
 const ShowsItem = ({ show, id }) => {
   const { handleAddToBookmark } = useContext(ShowsContext);
   const { title } = show;
