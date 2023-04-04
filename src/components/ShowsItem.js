@@ -6,9 +6,9 @@ const ShowsItem = ({ show, id }) => {
   return (
     <>
       <h1>{title}</h1>
-      <button onClick={() => handleAddToBookmark(id)} className="btn">
+      {/* <button onClick={() => handleAddToBookmark(id)} className="btn">
         Add to Bookmark
-      </button>
+      </button> */}
     </>
   );
 };

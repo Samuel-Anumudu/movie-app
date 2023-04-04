@@ -71,7 +71,7 @@ const Signup = () => {
         <form onSubmit={onSubmit}>
           <div className="form-control  w-full  relative  mt-5 mx-0">
             <input
-              className="input pl-[13px] py-4 block w-full  bg-transparent rounded-none text-white border-t-0 border-x-0 border-b-1 border-greyishBlue focus:border-b-white focus:outline-none valid:border-b-white valid:outline-none lg:cursor-pointer"
+              className="input pl-[13px] py-4 block w-full  bg-transparent rounded-none caret-red text-white border-t-0 border-x-0 border-b-1 border-greyishBlue focus:border-b-white focus:outline-none valid:border-b-white valid:outline-none lg:cursor-pointer"
               type="text"
               name="email"
               id="email"
@@ -85,7 +85,7 @@ const Signup = () => {
           </div>
           <div className="form-control  w-full  relative  mt-5 mx-0">
             <input
-              className="input py-4 pl-[13px]  block w-full bg-transparent rounded-none text-white border-t-0 border-x-0 border-b-1 border-greyishBlue focus:border-b-white focus:outline-none valid:border-b-white valid:outline-none cursor-pointer"
+              className="input py-4 pl-[13px]  block w-full bg-transparent rounded-none caret-red text-white border-t-0 border-x-0 border-b-1 border-greyishBlue focus:border-b-white focus:outline-none valid:border-b-white valid:outline-none cursor-pointer"
               type={showPassword ? "text" : "password"}
               value={password}
               name="password"
@@ -99,7 +99,7 @@ const Signup = () => {
           </div>
           <div className="form-control  w-full  relative  mt-5 mx-0">
             <input
-              className="input py-4 pl-[13px]  block w-full bg-transparent rounded-none text-white border-t-0 border-x-0 border-b-1 border-greyishBlue focus:border-b-white focus:outline-none valid:border-b-white valid:outline-none cursor-pointer"
+              className="input py-4 pl-[13px]  block w-full bg-transparent rounded-none caret-red text-white border-t-0 border-x-0 border-b-1 border-greyishBlue focus:border-b-white focus:outline-none valid:border-b-white valid:outline-none cursor-pointer"
               type={showPassword ? "text" : "password"}
               value={repeatPassword}
               name="repeatPassword"

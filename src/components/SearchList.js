@@ -5,8 +5,8 @@ import ShowsContext from "../context/ShowContext";
 const SearchList = () => {
   const { listOfShows, query } = useContext(ShowsContext);
   return (
-    <div>
-      <p className="font-bold">
+    <div className="container mx-auto px-5">
+      <p className="text-white text-xl font-light">
         {`Found ${query && listOfShows.length} result${
           listOfShows.length > 1 ? "s" : ""
         } for '${query}'`}
