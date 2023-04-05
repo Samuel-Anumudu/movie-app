@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-// import { ShowsProvider } from "./context/ShowsContext";
 import { ShowsProvider } from "./context/ShowContext";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";

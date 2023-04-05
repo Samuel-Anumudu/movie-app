@@ -1,7 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../firebase.config";
-import userProfileIcon from "../assets/image-avatar.png";
-import logo from "../assets/logo.svg";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,7 +23,12 @@ const Navbar = () => {
       <div className="container mx-auto px-5 py-6">
         <nav className="flex items-center justify-between">
           <div onClick={() => navigate("/")}>
-            <img src={logo} alt="logo" />
+            <svg width="33" height="27" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m26.463.408 3.2 6.4h-4.8l-3.2-6.4h-3.2l3.2 6.4h-4.8l-3.2-6.4h-3.2l3.2 6.4h-4.8l-3.2-6.4h-1.6a3.186 3.186 0 0 0-3.184 3.2l-.016 19.2a3.2 3.2 0 0 0 3.2 3.2h25.6a3.2 3.2 0 0 0 3.2-3.2V.408h-6.4Z"
+                fill="#FC4747"
+              />
+            </svg>
           </div>
           <ul className="flex items-center gap-7">
             <li onClick={() => navigate("/")}>
@@ -65,7 +68,7 @@ const Navbar = () => {
           </ul>
           <div>
             <img
-              src={userProfileIcon}
+              src="/assets/image-avatar.png"
               alt="profile icon"
               className="w-[24px] border border-white rounded-full"
             />

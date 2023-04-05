@@ -7,7 +7,7 @@ import SearchList from "../components/SearchList";
 
 const Movies = () => {
   const location = useLocation();
-  const { movies, handleSearchFilter, query, setSearch } =
+  const { movies, handleSearchFilter, query, setSearch, allShows } =
     useContext(ShowsContext);
 
   useEffect(() => {
@@ -31,9 +31,12 @@ const Movies = () => {
         ) : (
           <div>
             <p className="font-bold">Movies</p>
-            {movies.map((show) => (
-              <ShowsItem key={show.id} id={show.id} show={show} />
-            ))}
+            {allShows.map(
+              (show) =>
+                show.category === "Movie" && (
+                  <ShowsItem key={show.id} id={show.id} show={show} />
+                )
+            )}
           </div>
         )}
       </section>

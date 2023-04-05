@@ -99,7 +99,7 @@ const Login = () => {
               Show Password
             </span>
           </div>
-          <button className="btn w-full normal-case active:bg-white font-light text-base bg-red border-0 md:hover:bg-white md:hover:text-semiDarkBlue">
+          <button className="btn w-full normal-case font-light text-base bg-red border-0 md:hover:bg-white md:hover:text-semiDarkBlue">
             Login to your account
           </button>
         </form>

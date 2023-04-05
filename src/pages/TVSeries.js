@@ -7,7 +7,7 @@ import SearchList from "../components/SearchList";
 
 const TVSeries = () => {
   const location = useLocation();
-  const { tvSeries, handleSearchFilter, query, setSearch } =
+  const { tvSeries, handleSearchFilter, query, setSearch, allShows } =
     useContext(ShowsContext);
 
   useEffect(() => {
@@ -30,9 +30,12 @@ const TVSeries = () => {
         ) : (
           <div>
             <p className="font-bold">TV Series</p>
-            {tvSeries.map((show) => (
-              <ShowsItem key={show.id} id={show.id} show={show} />
-            ))}
+            {allShows.map(
+              (show) =>
+                show.category === "TV Series" && (
+                  <ShowsItem key={show.id} id={show.id} show={show} />
+                )
+            )}
           </div>
         )}
       </section>
