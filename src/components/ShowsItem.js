@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import ShowsContext from "../context/ShowContext";
 import movieCategoryIcon from "../assets/icon-category-movie.svg";
 import tvSeriesCategoryIcon from "../assets/icon-category-tv.svg";
