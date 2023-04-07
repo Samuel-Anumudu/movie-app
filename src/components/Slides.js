@@ -4,8 +4,8 @@ import SlidesItem from "./SlidesItem";
 const Slides = () => {
   const { allShows } = useContext(ShowsContext);
   return (
-    <div>
-      <p className="font-light text-xl">Trending</p>
+    <div className="container mx-auto pl-4">
+      <p className="font-light text-xl pb-5">Trending</p>
       <div className="carousel carousel-center space-x-4 bg-transparent">
         <div className="carousel-item">
           {allShows.map(

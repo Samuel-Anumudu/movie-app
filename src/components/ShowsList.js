@@ -6,11 +6,11 @@ import Slides from "./Slides";
 const ShowsList = () => {
   const { allShows } = useContext(ShowsContext);
   return (
-    <div className="container mx-auto px-5 pb-10">
+    <div className="pb-10">
       {/* Trending Shows */}
       <Slides />
-      <div>
-        <p className="font-light text-xl">Recommended for you</p>
+      <div className="container mx-auto px-4">
+        <p className="font-light text-xl py-5">Recommended for you</p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allShows.map(
             (show) =>

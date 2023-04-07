@@ -18,7 +18,7 @@ const ShowsItem = ({ show, id }) => {
           className="rounded-lg"
         />
         <div
-          className="absolute top-2 right-0  w-8 h-8 rounded-full bg-bgColor/[0.5] lg:hover:bg-bgColor lg:cursor-pointer"
+          className="absolute top-2 right-[5%] w-8 h-8 rounded-full bg-bgColor/[0.5] lg:hover:bg-bgColor lg:cursor-pointer"
           onClick={() => handleAddToBookmark(id)}
           title="add or remove show from bookmark"
         >

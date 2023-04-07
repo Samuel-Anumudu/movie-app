@@ -1,6 +1,6 @@
 const SearchInput = ({ placeholder, value, onChange }) => {
   return (
-    <div className="container mx-auto px-5 pt-4 pb-3">
+    <div className="container mx-auto px-4 pt-4 pb-3">
       <form>
         <div className="form-control flex flex-row items-center">
           <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">

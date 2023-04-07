@@ -18,9 +18,8 @@ const Navbar = () => {
   };
 
   return (
-    // container mx-auto px-6
     <header className="bg-semiDarkBlue">
-      <div className="container mx-auto px-5 py-6">
+      <div className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-between">
           <div onClick={() => navigate("/")}>
             <svg width="33" height="27" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +65,7 @@ const Navbar = () => {
               </svg>
             </li>
           </ul>
-          <div>
+          <div onClick={onLogout}>
             <img
               src="/assets/image-avatar.png"
               alt="profile icon"

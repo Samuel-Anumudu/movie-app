@@ -29,14 +29,16 @@ const Movies = () => {
         {query ? (
           <SearchList />
         ) : (
-          <div>
-            <p className="font-bold">Movies</p>
-            {allShows.map(
-              (show) =>
-                show.category === "Movie" && (
-                  <ShowsItem key={show.id} id={show.id} show={show} />
-                )
-            )}
+          <div className="container mx-auto px-4 pb-10">
+            <p className="font-light text-xl pb-5">Movies</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {allShows.map(
+                (show) =>
+                  show.category === "Movie" && (
+                    <ShowsItem key={show.id} id={show.id} show={show} />
+                  )
+              )}
+            </div>
           </div>
         )}
       </section>

@@ -1,7 +1,70 @@
-import React from "react";
+import { useContext } from "react";
+import ShowsContext from "../context/ShowContext";
+import movieCategoryIcon from "../assets/icon-category-movie.svg";
+import tvSeriesCategoryIcon from "../assets/icon-category-tv.svg";
+import bookmarkIconFull from "../assets/icon-bookmark-full.svg";
+import bookmarkIconEmpty from "../assets/icon-bookmark-empty.svg";
 
-const SlidesItem = () => {
-  return <div>SlidesItem</div>;
+const SlidesItem = ({ show, id }) => {
+  const { handleAddToBookmark } = useContext(ShowsContext);
+  const { year, category, rating, title } = show;
+  return (
+    <div className="relative">
+      <div>
+        <img
+          src={show.thumbnail.trending.small}
+          alt="show"
+          className={`rounded-lg w-[240px] h-[140px] ${
+            id !== 1 && "margin-left"
+          }`}
+        />
+        <div
+          className="absolute top-2 right-[3.5%]  w-8 h-8 rounded-full bg-bgColor/[0.5] lg:hover:bg-bgColor lg:cursor-pointer"
+          onClick={() => handleAddToBookmark(id)}
+          title="add or remove show from bookmark"
+        >
+          <img
+            src={show.isBookmarked ? bookmarkIconFull : bookmarkIconEmpty}
+            alt="bookmark icon"
+            className="-translate-x-2/4 -translate-y-2/4 absolute top-2/4 left-2/4 z-50"
+          />
+        </div>
+      </div>
+      <div
+        className={`absolute top-[63%]   ${
+          id !== 1 ? "left-[12%] w-[80%]" : "left-[6.5%] w-[86%]"
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <div className="">
+            <div className="flex gap-2 items-center">
+              <span className="text-xs font-light opacity-75">{year}</span>
+              <div className="flex items-center gap-1">
+                <span className="w-[2px] h-[2px] bg-white opacity-50 rounded-full inline-block mr-1"></span>
+                <img
+                  src={
+                    category === "Movie"
+                      ? movieCategoryIcon
+                      : tvSeriesCategoryIcon
+                  }
+                  alt="category icon"
+                />
+                <span className="text-xs font-light opacity-75">
+                  {category}
+                </span>
+              </div>
+            </div>
+            <p className="font-medium text-sm">{title}</p>
+          </div>
+          <div className="flex items-center bg-white/[0.15] w-[34px] h-[21px] justify-center rounded-[10.5px]">
+            <span className="text-xs font-normal font opacity-75">
+              {rating}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default SlidesItem;
