@@ -8,6 +8,7 @@ const showsFromLocalStorage = JSON.parse(
 );
 
 export const ShowsProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [shows, setShows] = useState({
     allShows: showsFromLocalStorage,
     bookmarkedShows: showsFromLocalStorage.filter((show) => show.isBookmarked),
@@ -39,13 +40,15 @@ export const ShowsProvider = ({ children }) => {
         formatString(event.target.value)
       );
     });
-    setSearch({
+    setSearch((prevState) => ({
+      ...prevState,
       query: event.target.value,
       listOfShows: filteredSearch,
-    });
+    }));
   };
 
   const handleAddToBookmark = (id) => {
+    console.log(id);
     const newShowsList = allShows.map((show) => {
       if (show.id === id) {
         return { ...show, isBookmarked: !show.isBookmarked };
@@ -54,7 +57,13 @@ export const ShowsProvider = ({ children }) => {
       }
     });
 
-    setShows((prevState) => ({ ...prevState, allShows: newShowsList }));
+    setShows((prevState) => ({
+      ...prevState,
+      allShows: newShowsList,
+      movies: newShowsList.filter((show) => show.category === "Movie"),
+      tvSeries: newShowsList.filter((show) => show.category === "TV Series"),
+      bookmarkedShows: newShowsList.filter((show) => show.isBookmarked),
+    }));
   };
 
   return (
@@ -66,10 +75,13 @@ export const ShowsProvider = ({ children }) => {
         movies,
         query,
         listOfShows,
+        isLoading,
+        showsFromLocalStorage,
         setSearch,
         setShows,
         handleSearchFilter,
         handleAddToBookmark,
+        setIsLoading,
       }}
     >
       {children}

@@ -4,8 +4,12 @@ import SearchInput from "../components/SearchInput";
 import ShowsContext from "../context/ShowContext";
 import ShowsItem from "../components/ShowsItem";
 import SearchList from "../components/SearchList";
+import useAuthStatus from "../hooks/useAuthStatus";
+import Spinner from "../components/Spinner";
 
 const Movies = () => {
+  const { checkingStatus } = useAuthStatus();
+
   const location = useLocation();
   const { movies, handleSearchFilter, query, setSearch, allShows } =
     useContext(ShowsContext);
@@ -19,6 +23,9 @@ const Movies = () => {
     }
   }, [location.pathname, setSearch]);
 
+  if (checkingStatus) {
+    return <Spinner />;
+  }
   return (
     <main>
       <section>
@@ -29,9 +36,11 @@ const Movies = () => {
         {query ? (
           <SearchList />
         ) : (
-          <div className="container mx-auto px-4 pb-10">
-            <p className="font-light text-xl pb-5">Movies</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="container lg:max-w-full mx-auto px-4 md:px-6 pb-10 lg:pl-40">
+            <p className="font-light text-xl md:text-3xl pb-5 md:pb-6 lg:pb-10">
+              Movies
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-10">
               {allShows.map(
                 (show) =>
                   show.category === "Movie" && (

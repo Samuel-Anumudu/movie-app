@@ -7,6 +7,7 @@
 :root {
   --bgColor: hsl(223, 30%, 9%);
   --redColor: hsl(0, 97%, 63%);
+  --transition: 0.3s ease;
 }
 
 *,
@@ -37,6 +38,14 @@ code {
 
 img {
   max-width: 100%;
+}
+
+li.cursor-pointer svg:hover {
+  fill: hsl(0, 97%, 63%);
+}
+li.cursor-pointer svg {
+  fill: #5a698f;
+  transition: var(--transition);
 }
 
 .form-control label span {
@@ -95,6 +104,15 @@ input[type="checkbox"] {
   }
 }
 
-.margin-left {
-  margin-left: 1rem;
+
+
+.li-hover {
+  transition: 0.3s ease;
+  border-radius: 5px;
 }
+
+.li-hover:hover {
+  background-color: var(--redColor);
+  color: white;
+}
+

@@ -11,6 +11,7 @@ import TVSeries from "./pages/TVSeries";
 import Bookmarked from "./pages/Bookmarked";
 import NotFound from "./pages/NotFound";
 import useAuthStatus from "./hooks/useAuthStatus";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { loggedIn } = useAuthStatus();
@@ -19,10 +20,18 @@ function App() {
       <BrowserRouter>
         {loggedIn && <Navbar />}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Movies" element={<Movies />} />
-          <Route path="/TVSeries" element={<TVSeries />} />
-          <Route path="/Bookmarked" element={<Bookmarked />} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="/" element={<Home />} />
+          </Route>
+          <Route path="/Movies" element={<PrivateRoute />}>
+            <Route path="/Movies" element={<Movies />} />
+          </Route>
+          <Route path="/TVSeries" element={<PrivateRoute />}>
+            <Route path="/TVSeries" element={<TVSeries />} />
+          </Route>
+          <Route path="/Bookmarked" element={<PrivateRoute />}>
+            <Route path="/Bookmarked" element={<Bookmarked />} />
+          </Route>
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
@@ -30,9 +39,8 @@ function App() {
       </BrowserRouter>
       <ToastContainer
         position="top-center"
-        autoClose={3000}
+        autoClose={1000}
         hideProgressBar={true}
-        // theme="dark"
       />
     </ShowsProvider>
   );
