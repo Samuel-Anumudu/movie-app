@@ -5,24 +5,24 @@ import Login from "./Login";
 import Spinner from "../components/Spinner";
 import SearchInput from "../components/SearchInput";
 import ShowsList from "../components/ShowsList";
-import SearchList from "../components/SearchList";
 import ShowsContext from "../context/ShowContext";
+import HomeSearch from "../components/HomeSearch";
 
 const Home = () => {
   const { loggedIn, checkingStatus } = useAuthStatus();
-  const { query, allShows, handleSearchFilter, setSearch } =
-    useContext(ShowsContext);
+  const {
+    setSearchParam,
+    searchParam,
+    handleSearch,
+  } = useContext(ShowsContext);
 
   const location = useLocation();
 
   useEffect(() => {
     if (location.pathname === "/") {
-      setSearch((prevState) => ({
-        ...prevState,
-        query: "",
-      }));
+      setSearchParam("");
     }
-  }, [location.pathname, setSearch]);
+  }, [location.pathname, setSearchParam]);
 
   if (checkingStatus) {
     return <Spinner />;
@@ -33,9 +33,10 @@ const Home = () => {
       <section>
         <SearchInput
           placeholder="Search for movies or TV series"
-          onChange={(e) => handleSearchFilter(e, allShows)}
+          value={searchParam}
+          onChange={(e) => handleSearch(e)}
         />
-        {query ? <SearchList /> : <ShowsList />}
+        {searchParam ? <HomeSearch /> : <ShowsList />}
       </section>
     </main>
   ) : (

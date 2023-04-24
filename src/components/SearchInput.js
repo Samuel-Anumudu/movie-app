@@ -14,7 +14,7 @@ const SearchInput = ({ placeholder, value, onChange }) => {
             placeholder={placeholder}
             className="input input-ghost rounded-none w-full lg:focus:border-greyishBlue lg:focus:border-b lg:border-0  bg-transparent caret-red text-white	focus:text-white placeholder:text-white placeholder:opacity-50 text-base md:text-2xl font-light focus:outline-none "
             value={value}
-            onChange={onChange}
+            onChange={(e) => onChange(e)}
           />
         </div>
       </form>
