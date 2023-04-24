@@ -2,13 +2,13 @@
 
 ## Available Scripts
 
-Clone project, and can run:
+Clone project, and run:
 
 ### `npm init`
 
 ## Start Dev Server
 
-run:
+To start development server, run:
 
 ### `npm start`
 
